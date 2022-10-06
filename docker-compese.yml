@@ -18,8 +18,6 @@ service:
   app:
     restart: always
     build: .
-    volumes:
-      - .:/usr/src/app
     ports:
       - 4000:4000
     network:
