@@ -1,20 +1,19 @@
 version: "3"
 
 services:
-  postgres:
-    container_name: postgres_container
-    image: postgres
+  mysql:
+    container_name: mysql_container
+    image: mysql
     restart: always
     environment:
-      POSTGRES_PASSWORD: docker
-      POSTGRES_USER: docker
-      POSTGRES_DB: docker
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      MYSQL_DATABASE: docker
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./var/pgdata:/var/lib/postgresql/data
+      - ./var/mysql:/var/lib/mysql
     networks:
       - application
-    container_name: postgres_db
   python:
     container_name: app_container
     build: .
@@ -26,10 +25,10 @@ services:
     networks:
       - application
     depends_on:
-      - postgres
+      - mysql
 networks:
   application:
     driver: bridge
 volumes:
-  postgres:
+  mysql:
   python:
