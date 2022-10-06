@@ -20,6 +20,11 @@ services:
     restart: always
     volumes:
       - .:/usr/src/app
+    environment:
+      DB_HOST: mysql
+      DB_NAME: docker
+      DB_USER: docker
+      DB_PASSWORD: docker
     ports:
       - "4000:4000"
     networks:
