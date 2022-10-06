@@ -2,7 +2,7 @@ version: "3"
 service:
   db:
     container_name: postgres_container
-    image: "postgres"
+    image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: docker
@@ -19,7 +19,7 @@ service:
     restart: always
     build: .
     ports:
-      - 4000:4000
+      - "4000:4000"
     network:
       - application
     depends_on:
