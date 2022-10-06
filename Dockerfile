@@ -1,4 +1,4 @@
-FROM python:3.6-stretch
+FROM python
 COPY . /usr/src/app
 COPY requirements.txt /usr/src/app/requirements.txt
 WORKDIR /usr/src/app
