@@ -18,6 +18,7 @@ services:
   python:
     container_name: app_container
     build: .
+    restart: unless-stopped
     volumes:
       - .:/usr/src/app
     ports:
