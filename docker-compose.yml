@@ -1,6 +1,4 @@
-version: "3.9"
-
-service:
+services:
   db:
     container_name: postgres_container
     image: postgres
