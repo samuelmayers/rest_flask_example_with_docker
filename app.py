@@ -16,6 +16,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLAlchemy(app)
 Marshmallow(app)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
 
 @app.route('/')
 def home():
@@ -65,5 +68,4 @@ def api(id):
     return jsonify({"Form":op})
 
 if __name__ == '__main__':
-    db.create_all()
     app.run(port=4000)
