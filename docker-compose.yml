@@ -17,7 +17,6 @@ services:
     container_name: postgres_db
   python:
     container_name: app_container
-    restart: always
     build: .
     ports:
       - "4000:4000"
