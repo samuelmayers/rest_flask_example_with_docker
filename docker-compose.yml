@@ -1,6 +1,7 @@
 version: "3"
 service:
   db:
+    container_name: postgres_container
     image: "postgres"
     restart: always
     environment:
@@ -14,6 +15,7 @@ service:
       - application
     container_name: postgres_db
   app:
+    container_name: app_container
     restart: always
     build: .
     ports:
