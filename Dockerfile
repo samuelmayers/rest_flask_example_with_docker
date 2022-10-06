@@ -1,4 +1,4 @@
-FROM python:3.9-alpine
+FROM python:3.6-stretch
 COPY . /usr/src/app
 COPY requirements.txt /usr/src/app/requirements.txt
 WORKDIR /usr/src/app
