@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, redirect, request, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -5,7 +6,12 @@ from db import db, ma
 from model import Form , FormSchema
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] ="mysql+pymysql://docker:docker@mysql:3306/docker"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@{}/{}'.format(
+    os.getenv('DB_USER', 'docker'),
+    os.getenv('DB_PASSWORD', ''),
+    os.getenv('DB_HOST', 'mysql'),
+    os.getenv('DB_NAME', 'docker')
+)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLAlchemy(app)
 Marshmallow(app)
