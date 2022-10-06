@@ -5,7 +5,7 @@ from db import db, ma
 from model import Form , FormSchema
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] ="postgresql://docker:docker@db/docker"
+app.config['SQLALCHEMY_DATABASE_URI'] ="postgresql://docker:docker@postgres/docker"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 SQLAlchemy(app)
 Marshmallow(app)
