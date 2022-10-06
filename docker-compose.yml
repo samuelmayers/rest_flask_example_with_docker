@@ -1,5 +1,5 @@
 services:
-  db:
+  postgres:
     container_name: postgres_container
     image: postgres
     restart: always
@@ -13,7 +13,7 @@ services:
     network:
       - application
     container_name: postgres_db
-  app:
+  python:
     container_name: app_container
     restart: always
     build: .
@@ -22,9 +22,9 @@ services:
     network:
       - application
     depends_on:
-      - db
+      - postgres
 networks:
   application:
     driver: bridge
 volumes:
-  db_data:
+  postgres:
