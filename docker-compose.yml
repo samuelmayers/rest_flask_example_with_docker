@@ -12,14 +12,11 @@ services:
       MYSQL_DATABASE: docker
     volumes:
       - ./var/mysql:/var/lib/mysql
-    networks:
-      - application
+      
   python:
     container_name: app_container
     build: .
     restart: always
-    volumes:
-      - .:/usr/src/app
     environment:
       DB_HOST: mysql
       DB_NAME: docker
@@ -27,13 +24,8 @@ services:
       DB_PASSWORD: docker
     ports:
       - "4000:4000"
-    networks:
-      - application
     depends_on:
       - mysql
-networks:
-  application:
-    driver: bridge
+
 volumes:
   mysql:
-  python:
