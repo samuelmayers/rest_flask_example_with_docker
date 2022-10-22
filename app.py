@@ -6,7 +6,9 @@ from db import db, ma
 from model import Form , FormSchema
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://{}:{}@{}/{}'.format(
+app.config['SQLALCHEMY_DATABASE_URI'] = '{}+{}://{}:{}@{}/{}'.format(
+    os.getenv('DB', 'mysql'),
+    os.getenv('DB_DRIVER', 'pymysql'),
     os.getenv('DB_USER', 'docker'),
     os.getenv('DB_PASSWORD', ''),
     os.getenv('DB_HOST', 'mysql'),
