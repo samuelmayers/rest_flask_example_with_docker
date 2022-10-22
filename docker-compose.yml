@@ -18,6 +18,8 @@ services:
     build: .
     restart: always
     environment:
+      DB: mysql
+      DB_DRIVER: pymysql
       DB_HOST: mysql
       DB_NAME: docker
       DB_USER: docker
