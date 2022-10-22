@@ -35,10 +35,10 @@ def add():
     db.session.commit()
     return redirect('/')
 
-@app.route('/edit/<string:id>',methods=['POST','GET'])
+@app.route('/edit/<string:id>',methods=['POST','GET','PUT'])
 def edit(id):
     form=Form.query.get(id)
-    if request.method == "POST":
+    if request.method == "POST" or request.method == "PUT":
         form.fullname = request.form['fullname']
         form.email = request.form['email']
         form.phone = request.form['phone']
@@ -46,7 +46,7 @@ def edit(id):
         return redirect('/')
     return render_template("update.html", form=form)
 
-@app.route('/delete/<id>')
+@app.route('/delete/<id>', methods=['DELETE','GET'])
 def delete(id):
     form=Form.query.get(id)
     db.session.delete(form)
