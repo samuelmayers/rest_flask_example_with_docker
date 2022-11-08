@@ -25,7 +25,7 @@ services:
       DB_USER: docker
       DB_PASSWORD: docker
     ports:
-      - "80:80"
+      - "443:443"
     depends_on:
       - mysql
 
